@@ -45,7 +45,7 @@ public class PersonaController {
 
         System.out.println("Estos datos los tomo del cuerpo del Formulario");
         System.out.println("Nombre :" + entity.getNombre());
-        System.out.println("Nombre :" + entity.getApellido());
+        System.out.println("Apellido :" + entity.getApellido());
         try{
             return ResponseEntity.status(HttpStatus.OK).body(personaServices.save(entity));
         }
@@ -65,7 +65,7 @@ public class PersonaController {
             return ResponseEntity.status(HttpStatus.OK).body(personaServices.update(id, entity));
         }
         catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error, por favor intente más tarde\"}");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
